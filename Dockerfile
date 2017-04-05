@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM frolvlad/alpine-glibc
 
 RUN apk add --no-cache ca-certificates
 
