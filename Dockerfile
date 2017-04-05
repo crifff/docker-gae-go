@@ -24,8 +24,6 @@ RUN tar xzf /usr/local/hugo/${HUGO_BINARY}.tar.gz -C /usr/local/hugo/ \
 	&& ln -s /usr/local/hugo/hugo_${HUGO_VERSION}_linux_amd64/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo \
 	&& rm /usr/local/hugo/${HUGO_BINARY}.tar.gz
 
-
-
 # Install util
 RUN npm install -g yarn
 RUN goapp get github.com/jstemmer/go-junit-report
