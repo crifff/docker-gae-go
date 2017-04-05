@@ -5,7 +5,7 @@ RUN apk add --no-cache ca-certificates
 ENV APPENGINE_VERSION=1.9.48
 ENV HOME=/root
 ENV SDK=https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-${APPENGINE_VERSION}.zip \
-    PACKAGES="curl unzip git python nodejs py-pygments" \
+    PACKAGES="curl unzip git python nodejs py-pygments alpine-sdk" \
     GOPATH=${HOME}/go_appengine/gopath \
     GOROOT=${HOME}/go_appengine/goroot \
     PATH=${HOME}/go_appengine:${HOME}/go_appengine/gopath/bin:${PATH} 
