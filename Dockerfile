@@ -1,18 +1,17 @@
-FROM frolvlad/alpine-glibc
+FROM golang:1.8-alpine
 
 RUN apk add --no-cache ca-certificates
 
-ENV APPENGINE_VERSION=1.9.48
-ENV HOME=/root
-ENV SDK=https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-${APPENGINE_VERSION}.zip \
-    PACKAGES="curl unzip git python nodejs py-pygments alpine-sdk" \
-    GOPATH=${HOME}/go_appengine/gopath \
-    GOROOT=${HOME}/go_appengine/goroot \
-    PATH=${HOME}/go_appengine:${HOME}/go_appengine/gopath/bin:${PATH} 
 
-# Install appengine Go SDK
-RUN apk add --update --no-cache ${PACKAGES}
-RUN curl -fo /tmp/gae.zip ${SDK} && unzip -q /tmp/gae.zip -d /tmp/ && mv /tmp/go_appengine  ${HOME}/go_appengine && rm /tmp/gae.zip
+ENV APPENGINE_VERSION=1.9.48
+ENV SDK=https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-${APPENGINE_VERSION}.zip \
+    PACKAGES="curl unzip git nodejs py-pygments" \
+    PATH=/google_appengine:${PATH} \
+    GOROOT=/usr/local/go
+
+RUN apk add --update --no-cache gcc musl-dev git python ${PACKAGES} && \
+    curl -fo /tmp/gae.zip ${SDK} && unzip -q /tmp/gae.zip -d /tmp/ && mv /tmp/go_appengine /google_appengine && \
+    rm -rf /tmp/* /var/cache/apk/*
 
 # Install Hugo
 ENV HUGO_VERSION 0.19
