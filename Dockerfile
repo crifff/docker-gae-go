@@ -13,7 +13,7 @@ RUN sudo apt-get update && sudo apt-get install -y gcc musl-dev git python ${PAC
     sudo apt-get clean
 
 # Install Hugo
-ENV HUGO_VERSION 0.19
+ENV HUGO_VERSION 0.20.7
 ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux-64bit
 
 RUN mkdir -p ${HOME}/hugo cd ${HOME}/hugo && wget https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}.tar.gz  \
