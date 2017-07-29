@@ -7,7 +7,7 @@ ENV SDK=https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_
     PATH=${HOME}/go_appengine:${PATH} \
     GOROOT=${HOME}/go
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN sudo apt-get update && sudo apt-get install -y gcc musl-dev git python ${PACKAGES} && \
     curl -fo /tmp/gae.zip ${SDK} && unzip -q /tmp/gae.zip -d /tmp/ && mv /tmp/go_appengine ${HOME}/go_appengine && \
     sudo apt-get clean
